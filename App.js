@@ -22,7 +22,7 @@ function HomeScreen({ navigation }) {
       />
       </View>
       <View style={[{ width: "90%", margin: 10, backgroundColor: "red"  ,borderRadius:5}]}>
-      <Button color={"red"} 
+      <Button color={"blue"} 
         title="Signup"
         onPress={() => navigation.navigate('Signup')}
       />
