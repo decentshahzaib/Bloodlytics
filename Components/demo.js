@@ -1,48 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Ionicons,AntDesign,FontAwesome  } from '@expo/vector-icons';
-import { StyleSheet, Text, View ,Button,TextInput,Image,Picker,TouchableOpacity,} from 'react-native';
+import { Ionicons,AntDesign  } from '@expo/vector-icons';
+import { StyleSheet, Text, View ,Button,TextInput,Image,Picker} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { borderBottomColor, textShadowColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import Login from './Components/Login.js';
 import Signup from './Components/Signup.js';
-import MyDrawer from './Components/Nexthome.js';
-
-
-
-import { createDrawerNavigator } from '@react-navigation/drawer';
 
 function HomeScreen({ navigation }) {
   return (
     <>
-    <View style={styles.Hscreen}>
+    <View style={{ flex: 1, alignItems: 'center',justifyContent:"center", backgroundColor:"white" }}>
     <View style={styles.logo}>
     <Image style={styles.logo} source = {require('./assets/logo.png')} />
     </View>
     <Text>Welcome to Bloodlytics</Text>
-       <View style={[{ width: "90%", margin: 10, backgroundColor: "red" ,height:32,borderRadius: 15,overflow:"hidden",}]}>
-     
-      <TouchableOpacity
+       <View style={[{ width: "90%", margin: 10, backgroundColor: "red" ,borderRadius: 5,overflow:"hidden",}]}>
+      <Button
+        title="login"
+        color={"red"}
         onPress={() => navigation.navigate('Login')}
-        style={styles.button1}>
-       <View style={{marginTop:4}}> 
-       <AntDesign name="login" size={22} color="white" />
-       </View>
-        <Text style={styles.text}>Log in</Text>
-      </TouchableOpacity>
+      />
       </View>
-     
-      <View style={[{ width: "90%", margin: 10,borderRadius:50,height:32, backgroundColor: "red"  ,borderRadius:15}]}>
-       <TouchableOpacity
+      <View style={[{ width: "90%", margin: 10, backgroundColor: "red"  ,borderRadius:5}]}>
+      <Button color={"red"} 
+        title="Signup"
         onPress={() => navigation.navigate('Signup')}
-        style={styles.icon}>
-          <View style={{marginTop:1}}> 
-        <FontAwesome name="sign-in" size={27} color="white" />
-        </View>
-        <Text style={styles.text2}>Sign up</Text>
-      </TouchableOpacity>
-
+      />
       </View>
     </View>
     </>
@@ -53,24 +38,16 @@ function HomeScreen({ navigation }) {
 
 
 const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
-
 
 function App() {
   return (
-    <>
-
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Sign up">
         <Stack.Screen name="Bloodlytics" component={HomeScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Welcome to Bloodlytics" component={MyDrawer} />
       </Stack.Navigator>
     </NavigationContainer>
-
-    
-    </>
   );
 }
 
@@ -135,16 +112,6 @@ const styles = StyleSheet.create({
   
     
   },
-  Hscreen:{
-    flex: 1, alignItems: 'center',justifyContent:"center", backgroundColor:"white" 
-  },
-  button1:{
-    backgroundColor: 'red',borderRadius:50,width:"100%" ,justifyContent:"center",flexDirection:"row"
-  },
 
-  text:{ fontSize: 20,marginLeft:1,textAlign:"center", color: 'white' },
-
-  text2:{ fontSize: 20,marginLeft:2,textAlign:"center", color: 'white' },
-  icon:{ backgroundColor: 'red',borderRadius:50,width:"100%" ,justifyContent:"center",flexDirection:"row"},
 
 });
