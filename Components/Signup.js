@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View ,Button,TextInput,Image,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View ,Button,TextInput,Image,TouchableOpacity,Alert} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Picker} from '@react-native-picker/picker';
@@ -64,7 +64,12 @@ function Signup({navigation}){
   }
 
   const [selectedValue, setSelectedValue] = useState("Select");
-
+// alert value of selected colony
+  const Show=(value)=>{
+    Alert.alert(value)
+  }
+  // extra for getting value of select
+  // Alert.alert(selectedValue)  
   return(
     <>
      <View style={{backgroundColor:"white"}}>
@@ -122,9 +127,9 @@ function Signup({navigation}){
 <Picker
       selectedValue={selectedValue}
       style={{   borderColor:"white", borderWidth:1 , width: 120,color:"#999"}}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+        onValueChange={Show}>
 
-        <Picker.Item label="Madina-Town" value="Madina Town" />
+        <Picker.Item label="Madina-Town" value="Madina-Town" />
         <Picker.Item label="Mansoorabad" value="Mansoorabad" />
         <Picker.Item label="Farooqabad" value="Farooqabad" />
         <Picker.Item label="Kohainoor" value="Kohainoor" />
