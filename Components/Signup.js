@@ -33,11 +33,13 @@ function Signup({navigation}){
     email:"",
     gender:"",
     age:"",
+    StreetNo:"",
+    HouseNO:"",
     password:"",
     confirmPassword:"",
     
   });
-  const{fullName,email,gender,age,password,confirmPassword}=userInfo
+  const{fullName,email,gender,age,StreetNo,HouseNO,password,confirmPassword}=userInfo
 
   const onChangehandler=(value,fieldName)=>{
     setuserInfo({...userInfo,[fieldName]:value})
@@ -108,12 +110,12 @@ function Signup({navigation}){
 <TextInput 
  style={styles.TEXT}
  keyboardType='numeric' textContentType="password" placeholder="Street no" 
- value={age} onChangeText={(value)=>onChangehandler(value,'age')} />
+ value={StreetNo} onChangeText={(value)=>onChangehandler(value,'StreetNo')} />
 
 <TextInput 
  style={styles.TEXT}
  keyboardType='numeric' textContentType="password" placeholder="House no" 
- value={age} onChangeText={(value)=>onChangehandler(value,'age')} />
+ value={HouseNO} onChangeText={(value)=>onChangehandler(value,'HouseNO')} />
 
 <View style={{flexDirection:"row",borderWidth:1,width:"90%",borderColor:"white",borderBottomColor:"red"}}>
 <Text style={styles.A}>Select Colony:</Text>
