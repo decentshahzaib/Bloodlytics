@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View ,Button,TextInput,Image,Picker,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View ,Button,TextInput,Image,TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {Picker} from '@react-native-picker/picker';
 import { useState } from 'react';
 import { Ionicons,AntDesign,FontAwesome  } from '@expo/vector-icons';
 
@@ -26,7 +27,7 @@ import { Ionicons,AntDesign,FontAwesome  } from '@expo/vector-icons';
 
 function Signup({navigation}){
   
-  const [selectedValue, setSelectedValue] = useState("Addiction");
+ 
   const [userInfo, setuserInfo] = useState({
     fullName:"",
     email:"",
@@ -59,6 +60,9 @@ function Signup({navigation}){
     if(isValidfoam())
     console.log(userInfo);
   }
+
+  const [selectedValue, setSelectedValue] = useState("Select");
+
   return(
     <>
      <View style={{backgroundColor:"white"}}>
@@ -82,17 +86,75 @@ function Signup({navigation}){
      keyboardType='email-address'  placeholder="Email" autoCapitalize="none"
      value={email} onChangeText={(value)=>onChangehandler(value,'email')} />
 
+
 <TextInput 
-      style={styles.TEXT}
-     keyboardType='name-phone-pad' textContentType="password" placeholder="Gender"
-     value={gender} onChangeText={(value)=>onChangehandler(value,'gender')}  />
-<View style={{flexDirection:"row"}}>
+ style={styles.TEXT}
+ 
+ keyboardType='email-address' textContentType="password" placeholder="Password" 
+ value={password} onChangeText={(value)=>onChangehandler(value,'password')}
+  />
+
+<TextInput 
+ style={styles.TEXT}
+ keyboardType='email-address' textContentType="password" placeholder="Confirm Password" 
+ value={confirmPassword} 
+ onChangeText={(value)=>onChangehandler(value,'confirmPassword')}
+ />
+ <TextInput 
+ style={styles.TEXT}
+ keyboardType='numeric' textContentType="password" placeholder="Age" 
+ value={age} onChangeText={(value)=>onChangehandler(value,'age')} />
+
+<TextInput 
+ style={styles.TEXT}
+ keyboardType='numeric' textContentType="password" placeholder="Street no" 
+ value={age} onChangeText={(value)=>onChangehandler(value,'age')} />
+
+<TextInput 
+ style={styles.TEXT}
+ keyboardType='numeric' textContentType="password" placeholder="House no" 
+ value={age} onChangeText={(value)=>onChangehandler(value,'age')} />
+
+<View style={{flexDirection:"row",borderWidth:1,width:"90%",borderColor:"white",borderBottomColor:"red"}}>
+<Text style={styles.A}>Select Colony:</Text>
+<Picker
+      selectedValue={selectedValue}
+      style={{   borderColor:"white", borderWidth:1 , width: 120,color:"#999"}}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+
+        <Picker.Item label="Madina-Town" value="Madina Town" />
+        <Picker.Item label="Mansoorabad" value="Mansoorabad" />
+        <Picker.Item label="Farooqabad" value="Farooqabad" />
+        <Picker.Item label="Kohainoor" value="Kohainoor" />
+        
+       
+
+      </Picker>
+      </View>
+
+
+<View style={{flexDirection:"row",borderWidth:1,width:"90%",borderColor:"white",borderBottomColor:"red"}}>
+<Text style={styles.A}>Select Gender:</Text>
+<Picker
+      selectedValue={selectedValue}
+      style={{   borderColor:"white", borderWidth:1 , width: 120,color:"#999"}}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+
+        <Picker.Item label="Male" value="Male" />
+        <Picker.Item label="Female" value="Female" />
+       
+
+      </Picker>
+      </View>
+
+
+<View style={{flexDirection:"row",borderWidth:1,width:"90%",borderColor:"white",borderBottomColor:"red"}}>
 <Text style={styles.A}>Select BloodGroup:</Text>
 <Picker
-     
-        selectedValue={selectedValue}
-        style={{ height: 25, width: 140,color:"#999"}}
+      selectedValue={selectedValue}
+      style={{   borderColor:"black", borderWidth:1 ,height:30, width: 120,color:"#999"}}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+
         <Picker.Item label="AB+" value="AB+" />
         <Picker.Item label="AB-" value="AB-" />
         <Picker.Item label="B+" value="B+" />
@@ -105,36 +167,19 @@ function Signup({navigation}){
       </Picker>
       </View>
 
-<TextInput 
- style={styles.Password}
- keyboardType='numeric' textContentType="password" placeholder="Age" 
- value={age} onChangeText={(value)=>onChangehandler(value,'age')} />
 
 
-<View style={{flexDirection:"row"}}>
-<Text style={styles.A}>Select your addiction:</Text>
+<View style={{flexDirection:"row",width:"90%",borderWidth:1,borderColor:"white",borderBottomColor:"red"}}>
+<Text style={styles.A}>Select you are smoker/non-smoker:</Text>
 <Picker
         selectedValue={selectedValue}
-        style={{ height: 30, width: 140,color:"#999"}}
+        style={{  width: 120,color:"#999"}}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
         <Picker.Item label="Smoker" value="Smoker" />
         <Picker.Item label="Non-Smoker" value="Non-Smoker" />
       </Picker>
   </View>
 
-<TextInput 
- style={styles.Password}
- 
- keyboardType='email-address' textContentType="password" placeholder="Password" 
- value={password} onChangeText={(value)=>onChangehandler(value,'password')}
-  />
-
-<TextInput 
- style={styles.TEXT}
- keyboardType='email-address' textContentType="password" placeholder="Confirm Password" 
- value={confirmPassword} 
- onChangeText={(value)=>onChangehandler(value,'confirmPassword')}
- />
  
 
 <View style={[{ width: "90%", margin: 10, backgroundColor: "red"  ,borderRadius: 18}]}>
@@ -188,23 +233,18 @@ const styles = StyleSheet.create({
     },
     A:{
       color: "#999",
-      height: 30,
+      height: 50,
       width: 200,
       fontSize:15,
       textAlign:"left",
-    
-      borderColor:"white",
-      borderWidth:1,
-      
-      flexDirection:"column",
-      alignSelf:"flex-start",
-      marginLeft:18
-    },
+      alignItems: 'center',
+     marginLeft:0,
+     paddingTop:12   },
     TEXT:{
-      borderBottomColor:"red",borderColor:"white",width: "90%",borderWidth:1,paddingBottom:5,marginBottom:10
+      borderBottomColor:"red",borderColor:"white",width: "90%",borderWidth:1,paddingBottom:5,
     },
     Password:{
-      borderBottomColor:"red",borderTopColor:"red",borderColor:"white",height:42,width: "90%",borderWidth:1,paddingBottom:5,marginBottom:10
+      borderBottomColor:"red",borderColor:"white",height:40,width: "90%",borderWidth:1
     },
     BUTTON:{
       width: "90%",

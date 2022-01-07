@@ -6,37 +6,7 @@ import { Ionicons,AntDesign,FontAwesome  } from '@expo/vector-icons';
 
 
 function Login({ navigation }) {
-  // const [email,setemail]=useState({
-  //   isvaliddata:true,
-  //   isvalidpass:true,
-    
-  // });
-  // const [emailvalid,setemailvalid]=useState(false);
 
-  // const [pass,setpass]=useState("");
-  // const Namevalidation= text =>{
-  //   if(text.length===0){
-  //     Alert.alert('email required');
-  //    }
-  //    else {
-  //     Alert.alert('ada');
-  //    }
-  // }
-
-  // const emailchangehandler= text =>{
-    
-  //   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-   
-  //   if(text.required && text.trim().length===0 && reg.test(text.toLowerCase())){
-  //     setemailvalid(false);
-
-  //   }
-  //   else{
-  //     setemailvalid(true);
-  //   }
-  //   setemail(text);
-  // }
- 
   return ( 
     <>    
    
@@ -50,17 +20,11 @@ function Login({ navigation }) {
      
     <TextInput 
     style={styles.TEXT}
-     keyboardType='email-address' textContentType="password" placeholder="Email" 
-    //  value={email} onChangeText={emailchangehandler}
-    //  onBlur={Namevalidation}
-      />
-    {/* {!emailvalid && <Text>Please enter valid data</Text>} */}
+     keyboardType='email-address' textContentType="password" placeholder="Email"/>
     <TextInput 
       style={styles.TEXT}
       secureTextEntry={true}
-      placeholder="Password" 
-      // value={pass} onChangeText={ text =>setpass(text)}
-        />
+      placeholder="Password" />
     
       <View style={[{ width: "90%", margin: 10, backgroundColor: "red" ,borderRadius:18 }]}>
       
